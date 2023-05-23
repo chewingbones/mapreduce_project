@@ -33,6 +33,23 @@ months = {1: 'January',
  12: 'December'}
 if np.issubdtype(df['arrival_month'].dtype, np.number):
     df["arrival_month"] = df["arrival_month"].apply(lambda x: months[x])
+
+#convert months to seasons for extra credit
+seasons = {'January':"Winter",
+'February':"Winter",
+'March':"Spring",
+'April':"Spring",
+'May':"Spring",
+'June':"Summer",
+'July':"Summer",
+'August':"Summer",
+'September':"Fall",
+'October':"Fall",
+'November':"Fall",
+'December':"Winter"}
+
+#attach season column. I tested it and it works but right now it's not being used.
+df["season"] = df["arrival_month"].apply(lambda x: seasons[x])
     
 for month,price in zip(df.arrival_month,df.total_price):
     print ('%s\t%s' % (month, price))
